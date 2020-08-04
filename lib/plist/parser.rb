@@ -242,15 +242,7 @@ module Plist
   require 'base64'
   class PData < PTag
     def to_ruby
-      data = Base64.decode64(text.gsub(/\s+/, '')) unless text.nil?
-      begin
-        return Marshal.load(data)
-      rescue Exception
-        io = StringIO.new
-        io.write data
-        io.rewind
-        return io
-      end
+      text.gsub(/\s+/, '') unless text.nil?
     end
   end
 end
